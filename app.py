@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -138,32 +136,32 @@ elif menu == "Resume Generator":
         career_obj = generate_resume(form_data)
 
         st.subheader("📜 Generated Resume")
-        st.text(f"**Name:** {name}")
-        st.text(f"**Contact:** {phone} | **Email:** {email}")
+        st.text(f"Name: {name}")
+        st.text(f"Contact: {phone} | Email: {email}")
         st.markdown(f"**Career Objective:** {career_obj}")
-        st.text(f"**Skills:** {skills}")
-        st.text(f"**Education:** {education}")
-        st.text(f"**Projects:** {projects}")
-        st.text(f"**Certifications:** {certifications}")
+        st.text(f"Skills: {skills}")
+        st.text(f"Education: {education}")
+        st.text(f"Projects: {projects}")
+        st.text(f"Certifications: {certifications}")
 
 elif menu == "Talent Matcher":
     st.header("🔍 Find the Best Candidates for Your Job")
 
-    # Company selection
-    company_options = company_df['company name'].tolist()
-    selected_company = st.selectbox("🏢 Select a company", company_options)
+    # Input fields for company details
+    company_name = st.text_input("🏢 Company Name:")
+    required_skills = st.text_area("💼 Required Skills (comma-separated):")
+    min_experience = st.number_input("📅 Minimum Experience (years):", min_value=0, step=1)
+    job_location = st.text_input("📍 Job Location:")
 
     if st.button("Find Candidates"):
-        company_row = company_df[company_df['company name'] == selected_company].iloc[0]
-        required_skills = company_row['required skills']
-        min_experience = company_row['min experience (years)']
-        job_location = company_row['location']
+        if company_name and required_skills and min_experience and job_location:
+            # Call the match_users_to_company method with user inputs
+            matched_users = match_users_to_company(required_skills, min_experience, job_location)
 
-        matched_users = match_users_to_company(required_skills, min_experience, job_location)
-
-        if not matched_users.empty:
-            st.success(f"🎯 Top candidates for {selected_company}")
-            st.dataframe(matched_users[['skills', 'experience (years)', 'location', 'Score']])
+            if not matched_users.empty:
+                st.success(f"🎯 Top candidates for {company_name}")
+                st.dataframe(matched_users[['skills', 'experience (years)', 'location', 'Score']])
+            else:
+                st.warning("⚠️ No matching candidates found. Try adjusting the criteria.")
         else:
-            st.warning("⚠️ No matching candidates found. Try adjusting the criteria.")
-
+            st.warning("⚠️ Please fill in all fields.")
