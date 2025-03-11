@@ -1,4 +1,5 @@
-#.AI-Powered Job & Talent Matcher
+#
+AI-Powered Job & Talent Matcher
 This project leverages machine learning and natural language processing to help users predict ideal jobs, generate resumes, and match candidates to companies based on their skills and experience.
 
 Features
