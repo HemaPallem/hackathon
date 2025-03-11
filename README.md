@@ -1,4 +1,5 @@
 #AI-Powered Job & Talent Matcher
+
 This project leverages machine learning and natural language processing to help users predict ideal jobs, generate resumes, and match candidates to companies based on their skills and experience.
 
 Features
@@ -14,22 +15,14 @@ Cosine Similarity: For matching job seekers with companies.
 Installation
 Clone this repository:
 
-bash
-Copy
-Edit
-git clone https://github.com/your-username/ai-job-talent-matcher.git
-cd ai-job-talent-matcher
+
+git clone https://github.com/your-username/hackathon.git
+cd hackathon
+
 Install the required dependencies:
-
-bash
-Copy
-Edit
 pip install -r requirements.txt
-Run the Streamlit app:
 
-bash
-Copy
-Edit
+Run the Streamlit app:
 streamlit run app.py
 Open your browser and go to the provided local address to access the application.
 
@@ -40,15 +33,19 @@ cse_skills_dataset_200k.csv: User dataset used for talent matching.
 company_dataset.csv: Company dataset containing job requirements for talent matching.
 requirements.txt: List of Python dependencies for the project.
 README.md: Documentation for the project.
-How to Use
+
+How to Use:
+
 Job Prediction
 Select "Job Prediction" from the sidebar.
 Enter a list of your skills (comma-separated).
 Click "Predict Job" to see your suggested job based on your skills.
+
 Resume Generator
 Select "Resume Generator" from the sidebar.
 Enter your details, including name, phone number, email, skills, education, job experience, projects, and certifications.
 Click "Generate Resume" to get a career objective generated based on the provided data.
+
 Talent Matcher
 Select "Talent Matcher" from the sidebar.
 Enter your company details, including company name, required skills, minimum experience, and job location.
